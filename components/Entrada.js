@@ -11,6 +11,7 @@ const Entrada = ({resultado}) => {
   return (
     <article>
       <Image 
+        priority='true'
         src={imagen_blog.url}
         alt={`imagen blog ${titulo_blog}`}
         width={200}
