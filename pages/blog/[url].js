@@ -11,7 +11,9 @@ const EntradaBlog = ({ resultado }) => {
   const { titulo_blog, imagen_blog, fecha_blog, contenido_blog } = resultado
 
   return (
-    <Layout>
+    <Layout
+      pagina={titulo_blog}
+    >
       <main className="contenedor">
         <h1 className="heading">{titulo_blog}</h1>
         <article className={styles.entrada}>
@@ -38,7 +40,7 @@ export async function getStaticPaths() {
   const resultados = await respuesta.json()
 
   const paths = resultados.map( resultado => ({
-    params: { id: resultado.id }
+    params: { url: resultado.url }
   }))
 
   return {
@@ -47,14 +49,14 @@ export async function getStaticPaths() {
   }
 }
 
-export async function getStaticProps({ params: { id } }) {
-  const url = `${process.env.API_URL}/blogs/${id}`
-  const respuesta = await fetch(url)
+export async function getStaticProps({ params: { url } }) {
+  const urlBlog = `${process.env.API_URL}/blogs?url=${url}`
+  const respuesta = await fetch(urlBlog)
   const resultado = await respuesta.json()
 
   return {
     props: {
-      resultado
+      resultado: resultado[0]
     }
   }
 }
