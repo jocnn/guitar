@@ -2,10 +2,11 @@ import Link from 'next/link'
 import Image from 'next/image'
 
 import { formatoFecha } from '../helpers'
+import styles from '../styles/Entrada.module.css'
 
 const Entrada = ({resultado}) => {
 
-  const { titulo_blog, resumen_blog, fecha_blog, imagen_blog, contenido_blog, id } = resultado
+  const { titulo_blog, resumen_blog, fecha_blog, imagen_blog, id } = resultado
 
   return (
     <article>
@@ -16,12 +17,14 @@ const Entrada = ({resultado}) => {
         height={100}
         layout='responsive'
       />
-      <div>
-        <h1>{titulo_blog}</h1>
-        <p>{ formatoFecha(fecha_blog) }</p>
-        <p>{resumen_blog}</p>
+      <div className={styles.contenido}>
+        <h3>{titulo_blog}</h3>
+        <p className={styles.fecha}>{ formatoFecha(fecha_blog) }</p>
+        <p className={styles.resumen}>{resumen_blog}</p>
         <Link href={`/blog/${id}`}>
-          Leer entrada
+          <a className={styles.enlace}>
+            Leer entrada
+          </a>
         </Link>
       </div>
     </article>
