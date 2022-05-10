@@ -5,7 +5,8 @@ import styles from '../styles/Blog.module.css'
 
 const Blog = ({ resultados }) => {
 
-  console.log(resultados)
+  const url = `${process.env.NEXT_PUBLIC_API_URL}/blogs`
+  console.log(url)
 
   return (
     <Layout
@@ -29,11 +30,11 @@ const Blog = ({ resultados }) => {
   )
 }
 
-export async function getServerSideProps() {
-  const url = `http://localhost:1337/blogs`
+export async function getStaticProps() {
+  const url = `${process.env.API_URL}/blogs`
   const respuesta = await fetch(url)
   const resultados = await respuesta.json()
-
+  
   return {
     props: {
       resultados
