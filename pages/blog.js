@@ -5,6 +5,8 @@ import styles from '../styles/Blog.module.css'
 
 const Blog = ({ resultados }) => {
 
+  console.log(resultados)
+
   return (
     <Layout
       pagina="Blog de Tienda"
