@@ -1,10 +1,9 @@
 import Layout from "../components/Layout"
 import Entrada from "../components/Entrada"
 
-const Blog = ({ resultados }) => {
+import styles from '../styles/Blog.module.css'
 
-  console.log(resultados)
-  
+const Blog = ({ resultados }) => {
 
   return (
     <Layout
@@ -13,7 +12,7 @@ const Blog = ({ resultados }) => {
       <main className="contenedor">
         <h2 className="heading">Blog</h2>
 
-        <div>
+        <div className={styles.blog}>
           {
             resultados.map( resultado => (
               <Entrada 
