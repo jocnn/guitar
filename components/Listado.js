@@ -1,9 +1,12 @@
 import Guitarra from "./Guitarra"
+import styles from "../styles/Listado.module.css"
 
 const Listado = ({ resultados }) => {
 
+  console.log(resultados)
+  
   return (
-    <div>
+    <div className={styles.listado}>
       {
         resultados.map( resultado => (
           <Guitarra 
