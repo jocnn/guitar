@@ -1,8 +1,9 @@
 import Layout from "../components/Layout";
 import Listado from "../components/Listado";
 import Curso from "../components/Curso";
+import ListadoBlog from "../components/ListadoBlog";
 
-export default function Home({guitarras, curso}) {
+export default function Home({guitarras, curso, blog}) {
 
   //console.log(guitarras)
   //console.log(curso)
@@ -20,6 +21,11 @@ export default function Home({guitarras, curso}) {
       <Curso 
         curso={curso}
       />
+      <section className="contenedor">
+        <ListadoBlog 
+          resultados={blog}
+        />
+      </section>
     </Layout>
 	);
 }
@@ -27,21 +33,26 @@ export default function Home({guitarras, curso}) {
 export async function getServerSideProps() {
   const urlGuitarras = `${process.env.API_URL}/guitarras`
   const urlCurso = `${process.env.API_URL}/curso`
+  // usando filtros para mostrar 3 entradas de blog, en orden descendente
+  const urlBlog = `${process.env.API_URL}/blogs?_limit=3&_sort=created_at:desc`
 
-  const [ resGuitarras, resCurso ] = await Promise.all([
+  const [ resGuitarras, resCurso, resBlog ] = await Promise.all([
     fetch(urlGuitarras),
-    fetch(urlCurso)
+    fetch(urlCurso),
+    fetch(urlBlog)
   ])
 
-  const [ guitarras, curso ] = await Promise.all([
+  const [ guitarras, curso, blog ] = await Promise.all([
     resGuitarras.json(),
-    resCurso.json()
+    resCurso.json(),
+    resBlog.json()
   ])
 
   return {
     props: {
       guitarras,
-      curso
+      curso,
+      blog
     }
   }
 }
