@@ -105,5 +105,17 @@
     position: absolute;
     right: 0;
     bottom: -8px;
+    animation-name: mostrarImagen;
+    animation-duration: 2s;
+    animation-timing-function: ease-out;
+  }
+}
+
+@keyframes mostrarImagen {
+  0% {
+    transform: translateX(15rem);
+  }
+  100% {
+    transform: translateX(0);
   }
 }
