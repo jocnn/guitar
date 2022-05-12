@@ -1,10 +1,13 @@
+import { useRouter } from 'next/router'
+
 import Link from "next/link"
 import Image from "next/image"
 import styles from "../styles/Header.module.css"
 
 const Header = ({ guitarra }) => {
   
-  console.log(guitarra)
+  const router = useRouter()
+  //console.log(router)
   
   return (
     <header className={styles.header}>
@@ -25,12 +28,12 @@ const Header = ({ guitarra }) => {
 
         {
           guitarra && (
-            <div>
-              <h1>Modelo {guitarra.titulo_guitarra}</h1>
-              <p>{guitarra.descripcion_guitarra}</p>
-              <p>${guitarra.precio_guitarra}</p>
+            <div className={styles.modelo}>
+              <h2>Modelo {guitarra.titulo_guitarra}</h2>
+              <p className={styles.contenido}>{guitarra.descripcion_guitarra}</p>
+              <p className={styles.precio}>${guitarra.precio_guitarra}</p>
               <Link href={`/guitarras/${guitarra.url_guitarra}`}>
-                <a>
+                <a className={styles.enlace}>
                   Ver Producto
                 </a>
               </Link>
@@ -39,6 +42,19 @@ const Header = ({ guitarra }) => {
         }
 
       </div>
+
+      {
+        router.pathname === '/' && (
+          <div className={styles.guitarra}>
+            <Image
+              width={500}
+              height={1200}
+              src="/img/header_guitarra.png" 
+              alt="imagen guitarra en cabecera" />
+          </div>
+        ) 
+      }
+
     </header>
   )
 }
