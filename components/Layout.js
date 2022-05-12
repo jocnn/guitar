@@ -2,7 +2,7 @@ import Head from "next/head";
 import Header from "./Header";
 import Footer from "./Footer";
 
-const Layout = ({children, pagina}) => {
+const Layout = ({children, pagina, guitarra}) => {
   return (
     <>
       <Head>
@@ -14,13 +14,19 @@ const Layout = ({children, pagina}) => {
 				<link rel="icon" href="/favicon.ico" />
 			</Head>
       
-      <Header />
+      <Header 
+        guitarra={guitarra}
+      />
 
       {children}
 
       <Footer />
     </>
   )
+}
+
+Layout.defaultProps = {
+  guitarra: null
 }
 
 export default Layout
