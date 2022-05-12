@@ -3,7 +3,7 @@ import styles from "../styles/Listado.module.css"
 
 const Listado = ({ resultados }) => {
 
-  console.log(resultados)
+  //console.log(resultados)
   
   return (
     <div className={styles.listado}>

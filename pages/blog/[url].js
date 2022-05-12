@@ -7,7 +7,7 @@ import styles from '../../styles/Entrada.module.css'
 
 const EntradaBlog = ({ resultado }) => {
 
-  console.log(resultado)
+  //console.log(resultado)
   const { titulo_blog, imagen_blog, fecha_blog, contenido_blog } = resultado
 
   return (
