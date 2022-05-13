@@ -34,6 +34,7 @@ function MyApp({ Component, pageProps }) {
   return <Component 
     {...pageProps} 
     agregarCarrito={agregarCarrito}
+    carrito={carrito}
   />
 }
 
