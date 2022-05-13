@@ -6,6 +6,7 @@
 @media (min-width: 768px) {
   .contenido {
     grid-template-columns: 3fr 2fr;
+    align-items: flex-start;
   }
 }
 
@@ -83,4 +84,9 @@
 
 .eliminar:hover {
   cursor: pointer;
+}
+
+.resumen {
+  background-color: #F9fAFB;
+  border-radius: 1rem;
 }
