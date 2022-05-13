@@ -15,8 +15,7 @@ const Producto = ({guitarra, agregarCarrito}) => {
     id
   } = guitarra[0]
   
-  console.log(guitarra[0])
-  
+  //console.log(guitarra[0])
 
   const handleSubmit = e => {
     e.preventDefault()
